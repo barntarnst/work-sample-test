@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import registerServiceWorker from './utils/registerServiceWorker';
-import './styles/index.css';
+import './globalStyles/index.css';
 import App from './App';
 import configureStore from './store';
-
+/*eslint-disable */
 ReactDOM.render(
   <Provider store={configureStore()}>
     <App />
