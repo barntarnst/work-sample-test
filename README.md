@@ -10,7 +10,7 @@ The task is to build a simple blog. The blog will have a wordpress-backend and a
 - Wordpress administration to write posts (only text).
 - Wordpress rest api to allow public access to the posts in json.
 - Website that consumes the api and displays the posts ordered by date (latest first) according to the design in blog_design_spec.pdf.
-- Website should allow the user to order posts by date and alphabetically.
+- Website should allow the user to order posts by date and alphabetically (by title).
 - blog_design_spec.pdf show a desktop screen design. However, the website should be responsive and look nice on mobile and tablet devices.
 - Website should look the same and function the same in the latest major mobile and desktop browsers. 
 
