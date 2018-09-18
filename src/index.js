@@ -17,10 +17,10 @@ ReactDOM.render(
 );
 registerServiceWorker();
 
-// Webpack Hot reloading
-if (module.hot) {
-  module.hot.accept('./App', () => {
-    const NextApp = require('./App').default;
-    ReactDOM.render(<NextApp />, rootEl);
-  });
-}
+// // Webpack Hot reloading
+// if (module.hot) {
+//   module.hot.accept('./App', () => {
+//     const NextApp = require('./App').default;
+//     ReactDOM.render(<NextApp />, rootEl);
+//   });
+// }

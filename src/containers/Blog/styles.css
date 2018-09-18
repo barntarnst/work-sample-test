@@ -25,7 +25,7 @@
   margin-bottom: 20px;
   display: inline-flex;
 }
-.blog-button-container > div {
+.blog-button {
   text-transform: uppercase;
   font-size: 14px;
   background: transparent;
@@ -34,36 +34,11 @@
   border-radius: 30px;
   padding: 0.25em 2em;
   margin-right: 2em;
+  cursor: pointer;
 }
 
-/* TODO: Activate the class on select  */
-
-.blog-button-container > div:hover {
+.blog-button.button-in-active {
   color: rgba(95, 201, 238, 0.4);
   border-color: rgba(95, 201, 238, 0.4);
-}
 
-/* post container */
-.post-container {
-  display: flex;
-  margin-left: 100px;
-  margin-bottom: 50px;
-}
-.post-container > div {
-  margin-left: 10px;
-}
-
-.post-container > .post-left {
-  text-align: right;
-  align-self: baseline;
-}
-.post-container > .post-center {
-  flex: 4;
-  align-self: baseline;
-}
-
-.post-title {
-  font-size: 24px;
-  font-weight: bolder;
-  margin-bottom: 10px;
 }

@@ -7,13 +7,15 @@ const initialState = {
 };
 
 
-export default (store = initialState, action={}) => {
+export default (store = initialState, action = {}) => {
   switch (action.type) {
     case BLOG_REQUEST:
       return { ...store, isFetching: true, error: null };
 
     case BLOG_SUCCESS:
-      return { ...store, isFetching: false, blogs: action.payload,error: null };
+      return {
+ ...store, isFetching: false, blogs: action.payload, error: null,
+};
 
     case BLOG_FAILURE:
       return { ...store, isFetching: false, error: action.error };

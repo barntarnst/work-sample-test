@@ -1,4 +1,3 @@
-import Header from './Header';
-import BlogItem from './BlogItem'
+import BlogItem from './BlogItem';
 
-export { Header, BlogItem };
+export { BlogItem };
