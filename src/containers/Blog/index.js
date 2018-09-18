@@ -1,85 +1,75 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as blogActionCreators from './actions';
+import { BlogItem } from '../../components';
 import './styles.css';
 
 class Blogs extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+	static propTypes = {
+		fetchBlogs: PropTypes.func.isRequired,
+		blogsReducer: PropTypes.instanceOf(Object).isRequired,
+	};
 
-  render() {
-    /*eslint-disable  */
-    /*   cSpell:disable */
 
-    return (
-      <div className="blog-container">
-        <div className="blog-count">#3</div>
-        <div className="blog-hero">
-          <h1>Lorem ipsum dolor sit amet</h1>
-        </div>
-        <div className="blog-button-container">
-          <div className="blog-button">Date</div>
-          <div className="blog-button">Alphabetical</div>
-        </div>
 
-        <div className="post-container">
-          <div className="post-left">2018-08-29</div>
-          <div className="post-center">
-            <div className="post-title">
-              <p>An eos euismod accusamus disputando</p>
-            </div>
-            <div className="post-description">
-              <p>
-                Lorem, dolor sit amet consectetur adipisicing elit. Voluptatum incidunt beatae
-                officia voluptate recusandae magni molestiae delectus unde esse, dicta maiores
-                nesciunt corporis ducimus, maxime excepturi quasi? Velit sequi hic ut necessitatibus
-                id inventore facilis iste. Tempore ut unde doloribus, delectus ipsam autem
-                voluptates molestias quidem assumenda et adipisci totam?
-              </p>
-            </div>
+	constructor(props) {
+		super(props);
+		this.state = {isFetching:false};
+	}
+
+	componentDidMount() {
+		const { fetchBlogs } = this.props;
+    fetchBlogs();
+    // console.log(this.props)
+	}
+
+	renderBlogs = ({isFetching,blogs}) => {
+
+    if (isFetching || !blogs ) return <div>Loading...</div> ;
+
+return blogs.map((item) => {
+  // console.log(item)
+  return <BlogItem key={item.id} {...item} />
+})
+
+  };
+
+
+
+
+	render() {
+		const { blogsReducer} = this.props;
+		return (
+			<div className="blog-container">
+      <div className="blog-count">{ (blogsReducer && blogsReducer.blogs) ? `#${blogsReducer.blogs.length}` : '#' }</div>
+				<div className="blog-hero">
+					<h1>Lorem ipsum dolor sit </h1>
+				</div>
+				<div className="blog-button-container">
+					<div className="blog-button" onClick={() => this.setState({ activeButton: 'date' })}>
+						Date
+					</div>
+					<div className="blog-button">Alphabetical</div>
+				</div>
+        <div>
+					{this.renderBlogs(blogsReducer)}
           </div>
-          <div />
-        </div>
-
-        <div className="post-container">
-          <div className="post-left">2018-08-29</div>
-          <div className="post-center">
-            <div className="post-title">
-              <p>An eos euismod accusamus disputando</p>
-            </div>
-            <div className="post-description">
-              <p>
-                Lorem, dolor sit amet consectetur adipisicing elit. Voluptatum incidunt beatae
-                officia voluptate recusandae magni molestiae delectus unde esse, dicta maiores
-                nesciunt corporis ducimus, maxime excepturi quasi? Velit sequi hic ut necessitatibus
-                id inventore facilis iste. Tempore ut unde doloribus, delectus ipsam autem
-                voluptates molestias quidem assumenda et adipisci totam?
-              </p>
-            </div>
-          </div>
-          <div />
-        </div>
-        <div className="post-container">
-          <div className="post-left">2018-08-29</div>
-          <div className="post-center">
-            <div className="post-title">
-              <p>An eos euismod accusamus disputando</p>
-            </div>
-            <div className="post-description">
-              <p>
-                Lorem, dolor sit amet consectetur adipisicing elit. Voluptatum incidunt beatae
-                officia voluptate recusandae magni molestiae delectus unde esse, dicta maiores
-                nesciunt corporis ducimus, maxime excepturi quasi? Velit sequi hic ut necessitatibus
-                id inventore facilis iste. Tempore ut unde doloribus, delectus ipsam autem
-                voluptates molestias quidem assumenda et adipisci totam?
-              </p>
-            </div>
-          </div>
-          <div />
-        </div>
-      </div>
-    );
-  }
+			</div>
+		);
+	}
 }
 
-export default Blogs;
+const mapStateToProps = ({blogsReducer}) =>{
+  // console.log(blogsReducer)
+  return {
+    blogsReducer
+}
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return bindActionCreators({ ...blogActionCreators }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Blogs);
