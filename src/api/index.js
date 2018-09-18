@@ -1,11 +1,11 @@
 const BASE_URL = 'http://sravan-sample.accomplice.se/wp/wp-json/wp/v2';
-const POSTS_URL = `${BASE_URL}/posts`;
+const BLOGS_URL = `${BASE_URL}/posts`;
 
-export { BASE_URL, POSTS_URL };
+export { BASE_URL, BLOGS_URL };
 
 /* cSpell:disable */
 // eslint-disable-next-line no-unused-vars
-const sample = {
+/* const sampleData = {
   id: 13,
   date: '2018-09-16T13:44:50',
   date_gmt: '2018-09-16T13:44:50',
@@ -24,4 +24,4 @@ const sample = {
   },
 
   author: 1,
-};
+}; */
