@@ -1,10 +1,21 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb"],"parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
   "rules": {
     "linebreak-style": 0,
     "global-require": 0,
-    "eslint linebreak-style": [0, "error", "windows"],
+    "eslint linebreak-style": [
+      0,
+      "error",
+      "windows"
+    ],
     "react/jsx-filename-extension": 0,
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 1,
+    "import/no-unresolved": 1,
+    "no-unused-vars":1,
+    "no-console":1,
+    "indent":0
   }
 }
