@@ -1,11 +1,17 @@
-import React from 'react';
-// import { Header } from '../components';
+import React, { Fragment } from 'react';
+
 import { Blogs } from '../containers';
+import GlobalStyle from '../globalStyles';
+
+// import { Header } from '../components';
 
 const App = () => (
-  <section>
-    <Blogs />
-  </section>
+  <Fragment>
+    <GlobalStyle />
+    <section>
+      <Blogs />
+    </section>
+  </Fragment>
 );
 
 export default App;
