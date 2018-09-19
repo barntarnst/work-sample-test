@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import { backgroundColor, textColor } from './variables';
 
 export default createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,600');
+
 *,
 *:before,
 *:after {
@@ -15,12 +18,8 @@ export default createGlobalStyle`
 
 body {
   height: 100%;
-  width: 100%;  
-  background-color: rgb(225, 58, 58);
-  color: rgb(255, 255, 255);
+  width: 100%;
+  background-color: ${backgroundColor};
+  color: ${textColor};
 }
 `;
-
-// Imported in index.html
-// google fonts
-// @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');

@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react';
-
 import { Blogs } from '../containers';
-import GlobalStyle from '../globalStyles';
-
-// import { Header } from '../components';
+import GlobalStyle from '../theme/globalStyles';
 
 const App = () => (
   <Fragment>
