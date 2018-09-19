@@ -1,10 +1,10 @@
 import { css } from 'styled-components';
 
 const sizes = {
-  phone: 376,
-  tablet: 768,
-  desktop: 992,
-  giant: 1170,
+  phone: 444,
+  tablet: 760,
+  desktop: 1000,
+  largeDesktop: 1200,
 };
 
 const media = Object.keys(sizes).reduce((finalMedia, size) => ({
@@ -19,3 +19,11 @@ const media = Object.keys(sizes).reduce((finalMedia, size) => ({
   }), {});
 
 export default media;
+
+/* function phone(...args) {
+  return css`
+  @media (max-width: ${sizes[phone]}px) {
+    ${css(...args)}
+  }
+  `;
+} */

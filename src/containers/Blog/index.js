@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import * as blogActionCreators from './actions';
 import { BlogItem } from '../../components';
 import './styles.css';
+import { Container } from '../../theme/grid';
+import { alphabetical } from '../../utils/sorting';
 
 /**
  * Blogs container
@@ -16,13 +18,9 @@ class Blogs extends Component {
     blogsReducer: PropTypes.instanceOf(Object).isRequired,
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      // default selection date
-      selected: 'date',
-    };
-  }
+  state = {
+    selected: 'date',
+  };
 
   componentDidMount() {
     const { fetchBlogs } = this.props;
@@ -43,21 +41,9 @@ class Blogs extends Component {
       return blogs.map(item => <BlogItem key={item.id} {...item} />);
     }
 
-    /**
-     * sorts blogs in alphabetical order
-     */
+    // sorts blogs in alphabetical order
     const sortByAlpha = [...blogs];
-    sortByAlpha.sort((a, b) => {
-      const dateA = a.title.rendered.substring(0, 10);
-      const dateB = b.title.rendered.substring(0, 10);
-      if (dateA < dateB) {
-        return -1;
-      }
-      if (dateA > dateB) {
-        return 1;
-      }
-      return 0;
-    });
+    sortByAlpha.sort(alphabetical);
     return sortByAlpha.map(item => <BlogItem key={item.id} {...item} />);
   }
 
@@ -66,18 +52,18 @@ class Blogs extends Component {
     const { selected } = this.state;
     /* eslint-disable */
     return (
-      <div className="blog-container">
+      <Container>
         <div className="blog-count">
           {blogsReducer && blogsReducer.blogs
             ? `#${blogsReducer.blogs.length}`
             : '#'}
         </div>
+
         <div className="blog-hero">
-          <h1>Lorem ipsum dolor sit </h1>
+          <h1>Lorem ipsum dolor sit amet</h1>
         </div>
         <div className="blog-button-container">
           <div
-            aria-selected="true"
             className={`blog-button {" "} ${selected === 'date' ? '' : 'button-in-active'}`}
             onClick={() => this.setState({ selected: 'date' })}
           >
@@ -86,10 +72,11 @@ class Blogs extends Component {
           <div
             className={`blog-button {" "} ${selected !== 'date' ? '' : 'button-in-active'}`}
             onClick={() => this.setState({ selected: 'alphabetical' })}
-          >Alphabetical</div>
+          >Alphabetical
+          </div>
         </div>
-        <div>{this.renderBlogs(blogsReducer, selected)}</div>
-      </div>
+       {this.renderBlogs(blogsReducer, selected)}
+  </Container>
     );
   }
 }
@@ -101,18 +88,3 @@ const mapStateToProps = ({ blogsReducer }) => ({
 const mapDispatchToProps = dispatch => bindActionCreators({ ...blogActionCreators }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Blogs);
-
-/*
-		// date sorting for future references
-					console.log(	[...blogs]);
-			const newDate = [...blogs];
-			newDate.sort((a, b) => {
-				const dateA = a.date;
-				const dateB = b.date;
-				if (dateA < dateB) { return -1; }
-				if (dateA > dateB) { return 1; }
-				return 0;
-			});
-			console.log(newDate);
-
-*/
