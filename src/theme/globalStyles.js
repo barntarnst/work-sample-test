@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import { backgroundColor, textColor } from './variables';
 
 export default createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,600');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
 
 *,
 *:before,

@@ -1,25 +1,3 @@
-.blog-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 960px;
-  margin: 0 50px;
-  padding: 10px 30px;
-}
-
-.blog-count {
-  font-size: 24px;
-  font-weight: bold;
-  margin-left: auto;
-}
-.blog-hero {
-  font-size: 30px;
-  font-weight: bolder;
-}
-
-.post-container {
-  display: flex;
-}
 
 .blog-button-container {
   margin-bottom: 20px;

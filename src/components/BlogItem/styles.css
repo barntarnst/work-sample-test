@@ -2,7 +2,8 @@
 .post-container {
     display: flex;
     margin-left: 100px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    margin-top:20px
   }
   .post-container > div {
     margin-left: 10px;
@@ -19,6 +20,5 @@
 
   .post-title {
     font-size: 24px;
-    font-weight: bolder;
     margin-bottom: 10px;
   }
